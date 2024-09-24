@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>REGISTRASI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+      .errMessage.input-error {
+        display: block;
+      }
+
+      .errMessage {
+        margin-top: 4px;
+        color: #ef4444;
+        font-size: 0.875rem; /* Text size: 14px */
+        display: none; /* Awalnya disembunyikan */
+      }
+    </style>
+
+    <script>
+      function validateEmail(email) {
+        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+      }
+
+      function regis() {
+        var name = $("#name").val();
+        var email = $("#email").val();
+        var password = $("#password").val();
+        var confirmPass = $("#confirm-password").val();
+
+        if (name == "") {
+          $("#errName").addClass("input-error").text("*Nama Harus Diisi!");
+        } else {
+          $("#errName").removeClass("input-error");
+        }
+
+        if (email == "") {
+          $("#errEmail").addClass("input-error").text("*Email Harus Diisi!");
+        } else if (!validateEmail(email)) {
+          $("#errEmail").addClass("input-error").text("*Format email tidak valid!");
+        } else {
+          $("#errEmail").removeClass("input-error");
+        }
+
+        if (password == "") {
+          $("#errPass").addClass("input-error").text("*Password Harus Diisi!");
+        } else {
+          $("#errPass").removeClass("input-error");
+        }
+
+        if (confirmPass == "") {
+          $("#errConPass").addClass("input-error").text("*Konfirmasi Password Harus Diisi!");
+        } else {
+          $("#errConPass").removeClass("input-error");
+        }
+
+        if (name == "" || email == "" || password == "" || confirmPass == "" || !validateEmail(email)) {
+          return;
+        }
+
+        if (password != confirmPass) {
+          $("#errConPass").addClass("input-error").text("*Password Tidak Sama!");
+          return;
+        }
+
+        $.ajax({
+          type: "POST",
+          url: "/register",
+          data: { email_give: email, pw_give: password, name_give: name, confirmPass_give: confirmPass },
+          success: function (response) {
+            if (response["result"] === "error") {
+              $("#errEmail").addClass("input-error").text("Email Tidak Ditemukan!");
+            } else {
+              $("#errEmail").removeClass("input-error");
+              Swal.fire({
+                title: "Registrasi Berhasil",
+                text: "Lanjutkan Login!",
+                icon: "success",
+                confirmButtonText: "OK!",
+                confirmButtonColor: "#137DCB",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.replace("/login");
+                }
+              });
+            }
+          },
+        });
+      }
+    </script>
+  </head>
+
+  <body>
+    <main class="bg-slate-100 min-h-screen flex items-center justify-center p-8 md:p-0">
+      <div class="bg-white shadow-lg flex flex-col items-center rounded-xl overflow-hidden lg:flex-row lg:w-2/3 2xl:w-1/2">
+        <!-- form -->
+        <div class="p-8 lg:w-1/2 sm:p-8">
+          <h1 class="font-bold text-gray-800 text-3xl md:text-4xl md:mb-16">PENDAFTARAN SISWA/SISWI BARU MTSS MA'ARIF AL-UTSMANI</h1>
+          <h2 class="text-2xl font-semibold mt-8 mb-6 text-gray-700">Registrasi</h2>
+
+          <div class="flex flex-col">
+            <div id="input-field" class="flex flex-col mb-4 relative">
+              <i class="fi fi-rr-user absolute top-11 right-5 text-zinc-400"></i>
+              <label for="name" class="mb-2 text-gray-700">Nama Anda</label>
+              <input type="text" name="name" id="name" placeholder="Nama Anda" class="px-4 py-2 border-2 border-slate-300 rounded-md max-w-full focus:border-blue-500 focus:outline-none" />
+              <div id="errName" class="errMessage"></div>
+            </div>
+
+            <div id="input-field" class="flex flex-col mb-4 relative">
+              <i class="fi fi-rr-envelope absolute top-11 right-5 text-zinc-400"></i>
+              <label for="email" class="mb-2 text-gray-700">Email Anda</label>
+              <input type="email" name="email" id="email" placeholder="youremail@gmail.com" class="px-4 py-2 border-2 border-slate-300 rounded-md max-w-full focus:border-blue-500 focus:outline-none" />
+              <div id="errEmail" class="errMessage"></div>
+            </div>
+
+            <div id="input-field" class="flex flex-col mb-4 relative">
+              <i class="fi fi-rr-lock absolute top-11 right-5 text-zinc-400"></i>
+              <label for="password" class="mb-2 text-gray-700">Password</label>
+              <input type="password" name="password" id="password" placeholder="Password Anda" class="px-4 py-2 border-2 border-slate-300 rounded-md max-w-full focus:outline-none focus:border-blue-500" />
+              <div id="errPass" class="errMessage"></div>
+            </div>
+
+            <div id="input-field" class="flex flex-col relative mb-4">
+              <i class="fi fi-rr-lock absolute top-11 right-5 text-zinc-400"></i>
+              <label for="confirm-password" class="mb-2 text-gray-700">Konfirmasi Password</label>
+              <input type="password" name="confirm-password" id="confirm-password" placeholder="Konfirmasi Password" class="px-4 py-2 border-2 border-slate-300 rounded-md max-w-full focus:outline-none focus:border-blue-500" />
+              <div id="errConPass" class="errMessage"></div>
+            </div>
+
+            <button class="my-6 bg-blue-600 hover:bg-blue-700 text-white font-medium text-lg px-4 py-2 rounded-md" onclick="regis()">Register</button>
+          </div>
+
+          <p class="text-gray-500">Sudah punya akun? <a href="/login" class="text-blue-500 font-semibold underline">Login</a></p>
+        </div>
+
+        <!-- image -->
+        <div class="w-1/2">
+          <img src="/static/mts.png" class="h-full lg:block hidden" />
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LOGIN</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+      .errMessage.input-error {
+        display: block;
+      }
+
+      .errMessage {
+        margin-top: 4px;
+        color: #ef4444;
+        font-size: 0.875rem; /* Text size: 14px */
+        display: none; /* Awalnya disembunyikan */
+      }
+    </style>
+
+    <script>
+      function validateEmail(email) {
+        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+      }
+
+      function login() {
+        var email = $("#email").val();
+        var password = $("#password").val();
+
+        if (email == "") {
+          $("#errEmail").addClass("input-error").text("*Email Harus Diisi!");
+        } else if (!validateEmail(email)) {
+          $("#errEmail").addClass("input-error").text("*Format email tidak valid!");
+        } else {
+          $("#errEmail").removeClass("input-error");
+        }
+
+        if (password == "") {
+          $("#errPass").addClass("input-error").text("*Password Harus Diisi!");
+        } else {
+          $("#errPass").removeClass("input-error");
+        }
+
+        if (email == "" || password == "" || !validateEmail(email)) {
+          return;
+        }
+
+        $.ajax({
+          type: "POST",
+          url: "/login",
+          data: { email_give: email, pw_give: password },
+          success: function (response) {
+            if (response["result"] === "error") {
+              $("#errEmail").addClass("input-error").text("*Email atau Password Tidak Ditemukan!");
+            } else if (response["result"] === "admin") {
+              window.location.href = "/homeadmin";
+            } else {
+              window.location.href = "/homeuser";
+            }
+          },
+        });
+      }
+    </script>
+
+  </head>
+
+  <body>
+    <main class="bg-slate-100 min-h-screen flex items-center justify-center p-8 md:p-0">
+      <div class="bg-white shadow-lg flex flex-col items-center rounded-xl overflow-hidden lg:flex-row lg:w-2/3 2xl:w-1/2">
+        <!-- form -->
+        <div class="p-8 lg:w-1/2 sm:p-8">
+          <h1 class="font-bold text-gray-800 text-3xl md:text-4xl md:mb-16">PENDAFTARAN SISWA/SISWI BARU MTSS MA'ARIF AL-UTSMANI</h1>
+          <h2 class="text-2xl font-semibold mt-8 mb-6 text-gray-700">Login</h2>
+          <div class="flex flex-col">
+            <div id="input-field" class="flex flex-col mb-4 relative">
+              <i class="fi fi-rr-envelope absolute top-11 right-5 text-zinc-400"></i>
+              <label for="email" class="mb-2 text-gray-700">Your email</label>
+              <input type="email" name="" id="email" placeholder="youremail@gmail.com" class="px-4 py-2 border-2 border-slate-300 rounded-md max-w-full focus:border-blue-500 focus:outline-none" />
+              <div id="errEmail" class="errMessage"></div>
+            </div>
+            <div id="input-field" class="flex flex-col relative">
+              <i class="fi fi-rr-lock absolute top-11 right-5 text-zinc-400"></i>
+              <label for="Password" class="mb-2 text-gray-700">Password</label>
+              <input type="password" name="" id="password" placeholder="your password" class="px-4 py-2 border-2 border-slate-300 rounded-md max-w-full focus:outline-none focus:border-blue-500" />
+              <div id="errPass" class="errMessage"></div>
+            </div>
+            <button class="my-6 bg-blue-600 hover:bg-blue-700 text-white font-medium text-lg px-4 py-2 rounded-md" onclick="login()">Login</button>
+          </div>
+          <p class="text-gray-500">Don't have an account? <a href="/register" class="text-blue-500 font-semibold underline">Sign up</a></p>
+        </div>
+        <!-- image -->
+        <div class="w-1/2">
+          <img src="/static/mts.png" class="h-full lg:block hidden" />
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

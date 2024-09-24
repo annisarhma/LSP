@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile User</title>
+
+    <meta property="og:title" content="Company Profile MTs" />
+    <meta property="og:description" content="PPDB Online" />
+    <meta property="og:image" content="/static/mts.png" />
+    <link rel="shortcut icon" href="/static/mts.png" type="image/x-icon" />
+    <link rel="icon" href="/static/mts.png" type="image/x-icon" />
+
+    <!-- Link Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&amp;display=swap" rel="stylesheet" />
+
+    <!-- Link Jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+    <!-- Link Ajax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <!-- Link CDN Boostrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+
+    <!-- Link FA -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <!-- Link CSS -->
+    <link href="/static/style.css" rel="stylesheet" />
+
+    <style>
+      .profile-box {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        color: black;
+      }
+
+      .profile-image {
+        margin-top: -50px;
+      }
+    </style>
+    
+    <script>
+      $(document).ready(function () {
+        get_posts();
+      });
+      function sign_out() {
+        alert("Signed Out!");
+        window.location.href = "/login";
+      }
+
+      function submitProfile() {
+        var foto = $("#profile-image-input")[0].files[0];
+        var nama = $("#full-name").val();
+        var gender = $("#gender").val();
+        var alamat = $("#address").val();
+        var tempatLahir = $("#birthplace").val();
+        var tanggalLahir = $("#birthdate").val();
+
+        var formData = new FormData();
+        formData.append("foto_give", foto);
+        formData.append("nama_give", nama);
+        formData.append("gender_give", gender);
+        formData.append("alamat_give", alamat);
+        formData.append("tempatLahir_give", tempatLahir);
+        formData.append("tanggalLahir_give", tanggalLahir);
+
+        $.ajax({
+          type: "POST",
+          url: "/profile",
+          data: formData,
+          contentType: false,
+          processData: false,
+          success: function (response) {
+            if (response["result"] === "success") {
+              alert("Berhasil");
+            }
+          },
+          error: function () {
+            alert("Terjadi kesalahan saat mengirim data profil.");
+          },
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var gender = "{{ user_info.gender }}";
+
+        // Cari elemen select berdasarkan ID
+        var genderSelect = document.getElementById("gender");
+
+        if (gender) {
+          for (var i = 0; i < genderSelect.options.length; i++) {
+            if (genderSelect.options[i].value === gender) {
+              genderSelect.options[i].selected = true;
+              break;
+            }
+          }
+        }
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="container tbl mb-5">
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+          <div class="box box-primary profile-box">
+            <div class="box-body">
+              <div class="row">
+                <div class="text-center profile-image">
+                  <div class="box">
+                    <img id="profile-image" src="{{user_info.foto}}" class="rounded-circle" alt="" width="100" height="100" />
+
+                    <nav id="btns-me" class="level is-mobile" style="margin-top: 2rem">
+                      <a class="button level-item has-text-centered" onclick="$('#modal-edit').addClass('is-active')" aria-label="edit">
+                        Edit Profile&nbsp;&nbsp;<span class="icon is-small"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                      </a>
+
+                      <div class="modal" id="modal-edit">
+                        <div class="modal-background" onclick="$('#modal-edit').removeClass('is-active')"></div>
+                        <div class="modal-content">
+                          <div class="box">
+                            <article class="media">
+                              <div class="media-content">
+                                <div class="field">
+                                  <label class="label" for="input-name">Nama</label>
+                                  <p class="control">
+                                    <input id="input-name" class="input" placeholder="Masukan nama kamu" value="{{ user_info.profile_name }}" />
+                                  </p>
+                                </div>
+
+                                <div class="field">
+                                  <label class="label" for="input-pic">Foto Profile</label>
+                                  <div class="control is-expanded">
+                                    <div class="file has-name">
+                                      <label class="file-label" style="width: 100%">
+                                        <input id="input-pic" class="file-input" type="file" name="resume" />
+                                        <span class="file-cta">
+                                          <span class="file-icon">
+                                            <i class="fa fa-upload"></i>
+                                          </span>
+                                          <span class="file-label">Pilih File</span>
+                                        </span>
+                                        <span id="file-name" class="file-name" style="width: 100%; max-width: 100%"> {{ user_info.profile_pic }} </span>
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <nav class="level is-mobile">
+                                  <div class="level-left"></div>
+                                  <div class="level-right">
+                                    <div class="level-item">
+                                      <a class="button is-sparta" onclick="update_profile()"> Update </a>
+                                    </div>
+                                    <div class="level-item">
+                                      <a class="button is-sparta is-outlined" onclick="$('#modal-edit').removeClass('is-active')"> Cancel </a>
+                                    </div>
+                                  </div>
+                                </nav>
+                              </div>
+                            </article>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a class="button level-item has-text-centered" onclick="sign_out()" aria-label="logout">
+                        Sign Out&nbsp;&nbsp;<span class="icon is-small"><i class="fa fa-sign-out" aria-hidden="true"></i></span>
+                      </a>
+                    </nav>
+
+                    <div class="mt-3">
+                      <input type="file" id="profile-image-input" />
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="mb-3">
+                    <label for="full-name" class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-control" id="full-name" placeholder="Nama Lengkap" value="{{user_info.nama}}" />
+                  </div>
+                  <div class="mb-3">
+                    <label for="gender" class="form-label">Jenis Kelamin</label>
+                    <select class="form-select" id="gender">
+                      <option value="">-- Pilih Jenis Kelamin --</option>
+                      <option value="laki-laki">Laki-laki</option>
+                      <option value="perempuan">Perempuan</option>
+                      <option value="other">Lainnya</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="address" class="form-label">Alamat</label>
+                    <textarea class="form-control" id="address" rows="3">{{ user_info.alamat }}</textarea>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col">
+                      <label for="birthplace" class="form-label">Tempat Lahir</label>
+                      <input type="text" class="form-control" id="birthplace" placeholder="Tempat Lahir" value="{{user_info.tempatLahir}}" />
+                    </div>
+                    <div class="col">
+                      <label for="birthdate" class="form-label">Tanggal Lahir</label>
+                      <input type="date" class="form-control" id="birthdate" value="{{user_info.tanggalLahir}}" />
+                    </div>
+                  </div>
+                  <div class="mb-3 text-end">
+                    <button type="submit" class="btn btn-primary" id="save-profile-form" onclick="submitProfile()"><i class="fa-solid fa-floppy-disk"></i> Simpan</button>
+                    <button type="button" class="btn btn-secondary" id="back-button" onclick="window.location.href='/homeuser'">Kembali</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

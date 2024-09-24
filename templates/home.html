@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Profile MTs</title>
+
+    <meta property="og:title" content="Company Profile MTs">
+    <meta property="og:description" content="PPDB Online">
+    <meta property="og:image" content="/static/mts.png">
+    <link rel="shortcut icon" href="/static/mts.png" type="image/x-icon">
+    <link rel="icon" href="/static/mts.png" type="image/x-icon">
+    <!-- Link Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&amp;display=swap" rel="stylesheet">
+    <!-- Link Jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <!-- Link Ajax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <!-- Link CDN Boostrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!-- Link FA -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Link CSS -->
+    <link href="/static/style.css" rel="stylesheet">
+
+    <script>
+        $(document).ready(function () {
+            $('.collapse').on('show.bs.collapse', function () {
+                $('.collapse.show').each(function () {
+                    $(this).collapse('hide');
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg rounded fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
+                aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
+                <a class="navbar-brand col-lg-3 me-0" href="/">
+                    <img src="/static/mts.png" style="width: 40px; height:40px">
+                    <span class="fs-4 nav-font" style="font-weight:bold; color: white;">MTs. Ma'arif Al-Utsmani</span>
+                </a>
+                <ul class="navbar-nav col-lg-6 justify-content-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#alur">Alur</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#syarat">Syarat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pengumuman">Pengumuman</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#dokumentasi">Dokumentasi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Kontak</a>
+                    </li>
+                </ul>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown"
+                        data-bs-display="static" aria-expanded="false">
+                        <img src="static/profile_pics/profile_placeholder.jpeg" alt="User Photo"
+                            class="dropdown-toggle-image rounded-5" style="width: 30px; height: 30px;">
+                    </button>
+
+                    <ul class="dropdown-menu dropdown-menu-lg-end">
+                        <li><a class="dropdown-item" href="/profile"><i class="fa fa-user"
+                                    aria-hidden="true"></i>Profile</a>
+                        </li>
+                        <li><a class="dropdown-item" href="/pendaftaran"><i class="fas fa-clipboard"
+                                    aria-hidden="true"></i>Pendaftaran</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/"><i class="fas fa-sign-out-alt" aria-hidden="true"></i>Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- End navbar -->
+
+    <!-- Carousel -->
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-label="Slide 1" aria-current="true"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"
+                class=""></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"
+                class=""></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="static/foto1.jpeg" class="d-block w-100" alt="Gambar1" id="carouselfoto">
+            </div>
+            <div class="carousel-item">
+                <img src="static/foto2.jpeg" class="d-block w-100" alt="Gambar2" id="carouselfoto">
+            </div>
+            <div class="carousel-item">
+                <img src="static/foto3.jpeg" class="d-block w-100" alt="Gambar3" id="carouselfoto">
+                <div class="carousel-caption">
+                    <h1><b>Pendaftaran Siswa/Siswi Baru</b></h1>
+                    <p><b>MTSS MA'ARIF AL-UTSMANI</b></p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- End Carousel -->
+
+    <!-- About Us -->
+    <section id="about">
+        <div class="container">
+            <div class="px-4 py-5 text-center">
+                <span class="display-6 fw-bold text-body-emphasis-white border-bottom">About Us</span>
+            </div>
+            <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                    <span class="featurette-heading fs-2 border-bottom fw-semibold">Profile Sekolah</span>
+                    <div class="py-2">
+                        <p>MTSS Ma'arif Al-Utsmani adalah sebuah sekolah Madrasah Tsanawiyah (MTs) swasta
+                            yang berlokasi di Jl. Ponpes Al Utsmani No. 1, Karangmenggah, Wonorejo, Pasuruan, Jawa
+                            Timur. Sekolah ini memulai perjalanannya pada tahun 2003 dan mendapat status akreditasi
+                            grade C dengan nilai 75 (akreditasi tahun 2022) dari BAN-S/M (Badan Akreditasi Nasional)
+                            Sekolah/Madrasah.</p>
+                        <p>MTSS Ma'arif Al-Utsmani memiliki 15 guru dan 3 staf TU.</p>
+                    </div>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <img class="rounded bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                        width="500" height="500" src="static/MTS.jpeg" id="imgabout">
+                </div>
+            </div>
+            <hr class="text-white">
+            <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+                <div class="col d-flex align-items-start">
+                    <div
+                        class="d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3 text-white-50">
+                        <i class="fa fa-puzzle-piece fa-2x"></i>
+                    </div>
+                    <div>
+                        <h3 class="fs-2 text-white fw-semibold">Visi Kami</h3>
+                        <p>“Menjadikan siswa/siswi yang berakhlak mulia, bertaqwa dan religius, berbudi pekerti,
+                            terampil, berprestasi dan memiliki daya saing yang hebat.”</p>
+                    </div>
+                </div>
+                <div class="col d-flex align-items-start">
+                    <div
+                        class="d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3 text-white-50">
+                        <i class="fa fa-puzzle-piece fa-2x"></i>
+                    </div>
+                    <div>
+                        <h3 class="fs-2 text-white fw-semibold">Misi Kami</h3>
+                        <ol>
+                            <li>Menumbuhkan potensi anak didik berdasarkan nilai-nilai islam.</li>
+                            <li>Meningkatkan kualitas kegiatan belajar mengajar (KBM).</li>
+                            <li>Menyelenggarakan pendidikan yang murah tetapi berkualitas.</li>
+                            <li>Memberikan bekal keterampilan sehingga menjadikan siswa yang kreatif, terampil dan mampu
+                                berinteraksi dengan baik.</li>
+                            <li>Meningkatkan pencapaian prestasi anak didik secara akademik maupun akademik.</li>
+                            <li>Meningkatkan kreatifitas anak didik dengan kegiatan-kegiatan intrakurikuler maupun
+                                ekstrakurikuler.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End About Us -->
+
+
+    <!-- Alur -->
+    <section id="alur">
+        <div class="container">
+            <div class="px-4 py-5 text-center">
+                <span class="display-6 fw-bold text-body-emphasis-white border-bottom">Alur Pendaftaran Siswa/Siswi
+                    Baru</span>
+            </div>
+            <div class="row justify-content-center" id="alur">
+                <div class="col-lg-2">
+                    <img class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        src="/static/daftarlogin1.png">
+                    <div class="d-grid col-10" style="width: 140px;">
+                        <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#1"
+                            aria-expanded="false" aria-controls="1" id="btnalur">
+                            1
+                        </button>
+                    </div>
+                    <div style="min-height: 120px;">
+                        <div class="collapse collapse-horizontal" id="1">
+                            <div class="card card-body border-light shadow-lg"
+                                style="width: 140px; background-color:#1c4343">
+                                Membuat Akun / Login Calon Siswa
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2">
+                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="/static/daftar1.png">
+                    <div class="d-grid col-10" style="width: 140px;">
+                        <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#2"
+                            aria-expanded="false" aria-controls="2" id="btnalur">
+                            2
+                        </button>
+                    </div>
+                    <div style="min-height: 120px;">
+                        <div class="collapse collapse-horizontal" id="2">
+                            <div class="card card-body border-light shadow-lg"
+                                style="width: 140px; background-color:#1c4343">
+                                Mendaftar dan Mengumpulkan berkas Melalui Form Pendaftaran
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2">
+                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="/static/nunggu.jpg">
+                    <div class="d-grid col-10" style="width: 140px;">
+                        <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#3"
+                            aria-expanded="false" aria-controls="3" id="btnalur">
+                            3
+                        </button>
+                    </div>
+                    <div style="min-height: 120px;">
+                        <div class="collapse collapse-horizontal" id="3">
+                            <div class="card card-body border-light shadow-lg"
+                                style="width: 140px; background-color:#1c4343">
+                                Menunggu Notifikasi bahwa Data sudah Tervalidasi
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2">
+                    <img class="bd-placeholder-img rounded-circle" width="140" height="140"
+                        src="https://i2.wp.com/2.bp.blogspot.com/-XFqtDkGqfrs/WUoF1a_xnSI/AAAAAAAACQ8/WGAuR8Y_yeMplziHVFxKBY7B29HjMsLHwCLcBGAs/s1600/OPENING%2B3.png?w=696&ssl=1">
+                    <div class="d-grid col-10" style="width: 140px;">
+                        <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#6"
+                            aria-expanded="false" aria-controls="6" id="btnalur">
+                            4
+                        </button>
+                    </div>
+                    <div style="min-height: 120px;">
+                        <div class="collapse collapse-horizontal" id="6">
+                            <div class="card card-body border-light shadow-lg"
+                                style="width: 140px; background-color:#1c4343">
+                                Datang Offline Untuk Registrasi Ulang
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Alur -->
+
+
+    <!-- Syarat -->
+    <section id="syarat">
+        <div class="container text-white">
+            <hr class="text-white">
+            <div class="row featurette px-4 py-5 my-5">
+                <div class="col-md-7">
+                    <span class="featurette-heading fs-1 border-bottom fw-semibold lh-base">Syarat Pendaftaran
+                        Siswa/Siswi Baru</span>
+                    <div class="py-4">
+                        <p class="lead"><i class="fas fa-check-square text-warning" style="margin-right: 10px;"></i>Scan
+                            KTP Orang Tua ( Sesuai dengan KK Siswa )</p>
+                        <p class="lead"><i class="fas fa-check-square text-warning" style="margin-right: 10px;"></i>Scan
+                            KK</p>
+                        <p class="lead"><i class="fas fa-check-square text-warning" style="margin-right: 10px;"></i>Scan
+                            Akte Kelahiran</p>
+                        <p class="lead"><i class="fas fa-check-square text-warning" style="margin-right: 10px;"></i>Pas
+                            foto Siswa/Siswi dengan ukuran 4 x 6</p>
+                        <p class="lead"><i class="fas fa-check-square text-warning" style="margin-right: 10px;"></i>Scan
+                            Ijazah SD/MI Sederajat</p>
+                        <p class="lead"><i class="fas fa-check-square text-warning" style="margin-right: 10px;"></i>Scan
+                            Surat Pindah (Bagi Pindahan) </p>
+                        <p class="lead"><i class="fas fa-check-square text-warning" style="margin-right: 10px;"></i>Scan
+                            Surat surat pendukung (KIP, KIS, BPJS, SKTM , dll )</p>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="400"
+                        height="400" src="https://i.pinimg.com/originals/1b/5a/c5/1b5ac54f866229e6d32469da36894a10.png"
+                        id="imgsyarat">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Syarat -->
+
+    <!-- Dokumentasi -->
+    <section id="dokumentasi">
+        <div class="container">
+            <div class="px-4 py-5 text-center">
+                <span class="display-6 fw-bold text-body-emphasis-white border-bottom">Dokumentasi</span>
+                <div class="row">
+                    {% for i, dok in enumerate(dokumentasi_list) %}
+                    <div class="col-md-4 col-sm-6 mb-3">
+                        <div class="card">                            
+                            <img src="{{ dok['file_path'] }}" class="card-img-top" alt="{{ dok['judul'] }}" />
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h4>{{ dok['judul'] }}</h4>
+                                </div>
+                                <p>{{ dok['deskripsi'] }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% if (i + 1) % 3 == 0 %}
+                </div>
+                <div class="row">
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Dokumentasi -->
+
+    <!-- start contact us -->
+    <section id="contact" style="color: white;">
+        <div class="container">
+            <div class="px-4 py-5 my-5 text-center">
+                <span class="display-6 fw-bold text-body-emphasis-white border-bottom">Kontak Kami</span>
+                <div class="col-lg-8 mx-auto">
+                    <br>
+                    <h4 class="lead mb-4">COMPANY PROFILE MTSS MA'ARIF AL-UTSMANI<br>Jl. Ponpes Al Utsmani No. 1,
+                        Karangmenggah, Wonorejo, Pasuruan, Jawa
+                        Timur, 67173</h4>
+
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-md-5 border border-2 rounded mt-2 mx-md-2 py-2">
+                            <h3 class="text-center">To Location</h3>
+                            <iframe class="rounded"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.5403136007944!2d112.7742847!3d-7.732366000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7d1982cdb39a5%3A0x3fd92323d056aac1!2sMTsS%20Maarif%20Al%20Utsmani!5e0!3m2!1sid!2sid!4v1717555387386!5m2!1sid!2sid"
+                                width="100%" height="210" style="border:0;" allowfullscreen="true" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+
+                        <div class="col-md-5 border border-2 rounded mt-2 mx-md-2 py-2" style="width: fit-content;">
+                            <div class="row align-items-center justify-content-center ">
+                                <div class="col-12 text-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="102"
+                                        viewBox="0 0 112 114" fill="none">
+                                        <path
+                                            d="M82.1449 68.4344C81.0196 67.8717 73.7054 64.4959 72.5801 63.9333C71.4548 63.3706 70.3295 63.3706 69.2043 64.4959C68.079 65.6212 65.8285 68.997 64.7032 70.1223C64.1405 71.2475 63.0153 71.2475 61.89 70.6849C57.9515 68.997 54.0131 66.7465 50.6373 63.9333C47.8241 61.1201 45.0109 57.7443 42.7604 54.3685C42.1977 53.2432 42.7604 52.1179 43.323 51.5553C43.8856 50.9926 44.4483 49.8674 45.5735 49.3047C46.1362 48.7421 46.6988 47.6168 46.6988 47.0542C47.2615 46.4915 47.2615 45.3663 46.6988 44.8036C46.1362 44.241 43.323 37.4894 42.1977 34.6762C41.6351 30.7377 40.5098 30.7377 39.3845 30.7377H36.5714C35.4461 30.7377 33.7582 31.863 33.1955 32.4256C29.8197 35.8015 28.1318 39.7399 28.1318 44.241C28.6945 49.3047 30.3824 54.3685 33.7582 58.8695C39.9472 67.8717 47.8241 75.186 57.3889 79.6871C60.2021 80.8124 62.4526 81.9376 65.2658 82.5003C68.079 83.6255 70.8922 83.6255 74.268 83.0629C78.2065 82.5003 81.5823 79.6871 83.8328 76.3113C84.9581 74.0607 84.9581 71.8102 84.3954 69.5596L82.1449 68.4344ZM96.2108 17.2345C74.268 -4.70836 38.8219 -4.70836 16.8791 17.2345C-1.12527 35.2388 -4.50109 62.808 7.87691 84.7508L0 113.445L29.8197 105.568C38.2593 110.069 47.2615 112.32 56.2636 112.32C87.2086 112.32 111.965 87.564 111.965 56.619C112.527 41.9905 106.338 27.9245 96.2108 17.2345ZM81.0196 96.0035C73.7054 100.505 65.2658 103.318 56.2636 103.318C47.8241 103.318 39.9472 101.067 32.6329 97.1288L30.945 96.0035L13.5033 100.505L18.0044 83.6255L16.8791 81.9376C3.37582 59.4322 10.1275 31.3004 32.0703 17.2345C54.0131 3.16855 82.1449 10.4828 95.6482 31.863C109.151 53.8058 102.962 82.5003 81.0196 96.0035Z"
+                                            fill="white"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="row align-items-center text-center justify-content-center">
+                                <div class="col-12">
+                                    <h3>Whatsapp</h3>
+                                    <p>Hubungi Lebih Mudah Menggunakan Whatsapp</p>
+                                    <a href="https://wa.me/6285755356126" class="btn btn-dark mt-4">Klik Disini</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center text-center justify-content-center">
+                            <div class="col-1">
+                                <a href="https://www.facebook.com/mts.karangmenggah.7" target="_blank">
+                                    <img src="/static/fb.png" alt="Facebook" width="60" height="60">
+                                </a>
+                            </div>
+                            <div class="col-1">
+                                <a href="https://www.instagram.com/mts_ma_alutsmani?igsh=MThta2dwODJ0YW1hMQ=="
+                                    target="_blank">
+                                    <img src="/static/ig.png" alt="Instagram" width="60" height="60">
+                                </a>
+                            </div>
+                            <div class="col-1">
+                                <a href="https://www.tiktok.com/@mts.maarifal_utsmani?_t=8m49eNJIRcX&_r=1"
+                                    target="_blank">
+                                    <img src="/static/tiktok.png" alt="TikTok" width="60" height="60">
+                                </a>
+                            </div>
+                            <div class="col-1">
+                                <a href="http://youtube.com/channel/UCkCJy69_MXW6dOeXbAx2mcw" target="_blank">
+                                    <img src="/static/yt.png" alt="YouTube" width="50" height="50">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- end contact us -->
+
+    <!-- start footer -->
+    <div class=" container">
+        <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top">
+            <p class="text-center text-light">COMPANY PROFILE © MTSS MA'ARIF AL-UTSMANI
+                - 2024 <a href="#"><i class="fa fa-long-arrow-up text-white"></i></a>
+            </p>
+        </footer>
+    </div>
+    <!-- end footer -->
+</body>
+
+</html>
